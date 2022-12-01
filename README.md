@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is effective-barnacle, a toy app for administrating jobs between plumbers and clients.
+A live version have be found at https://effective-barnacle.fly.dev/
 
-Things you may want to cover:
+### Development
 
-* Ruby version
+After cloning the repo run these commands to set up the data base and dependencies
+```
+bundle install
+bundle exec rails db:create
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The development server can be started via `./bin/dev`
