@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_055522) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_063227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_055522) do
     t.string "name", null: false
     t.integer "age", null: false
     t.text "private_note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plumbers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.text "vehicles", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
