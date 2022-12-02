@@ -24,9 +24,11 @@ Please see above for admin credentials
 
 ### API
 
-effective-barnacle implements a GraphQl API. THis can be used to fetch jobs belonging to a plumber.
+effective-barnacle implements a GraphQl API. This can be used to fetch jobs belonging to a plumber, or to mark a job as done.
 
-Using the following query we can find the jobs and client details for PLumber with an id of 54321
+#### Querying a plumber's jobs
+
+Using the following query we can find the jobs and client details for Plumber with an id of 54321
 ```
 query {
   plumberJobs(plumberId: 54321) {
@@ -70,7 +72,7 @@ The returned value may look like this
 }
 ```
 
-Notice that the client's private note cannot be queried
+Notice that the client's `private_note` cannot be queried
 ```
 query {
   plumberJobs(plumberId: 54321) {
@@ -104,5 +106,32 @@ query {
       }
     }
   ]
+}
+```
+
+#### Marking a job as done
+
+If we have a job's id then we can use the following query to mark the job done.
+```
+mutation {
+  markJobDone(input: {jobId: "e5758d02-ce9b-4642-b105-096e7a18d2c2"}) {
+    job {
+      id
+      doneAt
+    }
+  }
+}
+```
+This will return the job with the `done_at` set to the current time
+```
+{
+  "data": {
+    "markJobDone": {
+      "job": {
+        "id": "e5758d02-ce9b-4642-b105-096e7a18d2c2",
+        "doneAt": "2022-12-02T06:37:35Z"
+      }
+    }
+  }
 }
 ```
