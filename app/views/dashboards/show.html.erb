@@ -2,6 +2,4 @@
   <span>Hello <%= @current_admin.name %></span>
   <%= button_to "logout", destroy_admin_session_path, method: "delete" %>
 </div>
-<% @jobs.each do |job| %>
-  <p><%= "#{job.id} | #{job.client.name} | #{job.start_on} | #{job.plumbers.map(&:name).join(", ")}" %></p>
-<% end %>
+<%= render JobsTableComponent.new(jobs: @jobs) %>
