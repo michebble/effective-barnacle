@@ -6,6 +6,7 @@ ruby "3.1.2"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "devise", "~> 4.8"
+gem "graphql", "~> 2.0"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg_query", "~> 2.2"
@@ -31,4 +32,5 @@ group :development do
   gem "prosopite", "~> 1.2"
   gem "standardrb", "~> 1.0"
   gem "web-console"
+  gem "graphiql-rails"
 end
