@@ -1,0 +1,13 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Start date</th>
+      <th scope="col">Client</th>
+      <th scope="col">Assigned Plumbers</th>
+      <th scope="col">Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render JobsTableRowComponent.with_collection(jobs) %>
+  </tbody>
+</table>

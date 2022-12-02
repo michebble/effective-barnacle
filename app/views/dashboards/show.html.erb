@@ -1,2 +1,5 @@
-<%= @current_admin.name %>
-<%= button_to "logout", destroy_admin_session_path, method: "delete" %>
+<div class="flex justify-between">
+  <span>Hello <%= @current_admin.name %></span>
+  <%= button_to "logout", destroy_admin_session_path, method: "delete" %>
+</div>
+<%= render JobsTableComponent.new(jobs: @jobs) %>
