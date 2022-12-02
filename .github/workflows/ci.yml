@@ -1,0 +1,32 @@
+name: "Ruby on Rails CI"
+on:
+  - push
+env:
+  DATABASE_URL: "postgres://postgres:postgres@localhost:5432/effective_barnacle_test"
+  RAILS_ENV: test
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: 'trust'
+          POSTGRES_DB: effective_barnacle_test
+          TZ: UTC
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Set up database schema
+        run: bundle exec rails db:create db:schema:load
+      - name: Run Rspec
+        run: bundle exec rspec
