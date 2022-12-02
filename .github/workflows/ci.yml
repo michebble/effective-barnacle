@@ -4,6 +4,7 @@ on:
 env:
   DATABASE_URL: "postgres://postgres:postgres@localhost:5432/effective_barnacle_test"
   RAILS_ENV: test
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
   test:
     runs-on: ubuntu-latest
