@@ -18,4 +18,18 @@ RSpec.describe Job, type: :model do
       end
     end
   end
+
+  # Scopes
+
+  describe "#by_period" do
+    let!(:out_of_range_job1) { create(:job, start_on: "2022/02/28") }
+    let!(:out_of_range_job2) { create(:job, start_on: "2022/04/01") }
+    let!(:in_range_job) { create(:job, start_on: "2022/03/12") }
+    let(:start_on_from) { "2022/03/01" }
+    let(:start_on_to) { "2022/03/30" }
+
+    it "returns jobs between the start_on_from and start_on_to dates" do
+      expect(Job.by_period(start_on_from, start_on_to)).to contain_exactly(in_range_job)
+    end
+  end
 end
