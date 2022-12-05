@@ -1,9 +1,9 @@
 <div class="flex justify-between">
-  <span>Hello <%= @current_admin.name %></span>
-  <%= button_to "logout", destroy_admin_session_path, method: "delete" %>
+  <span class="prose-xl">Hello <%= @current_admin.name %></span>
+  <%= button_to "logout", destroy_admin_session_path, method: "delete", class: "btn-tertiary" %>
 </div>
 <div class="py-6">
-  <%= form_for :by_period, url: dashboard_path, method: "get", class: "flex" do |form| %>
+  <%= form_for :by_period, url: dashboard_path, method: "get", class: "flex items-end" do |form| %>
     <div class="flex flex-col pr-2">
       <%= form.label :start_on_from %>
       <%= form.date_field :start_on_from, value: @start_on_from %>
@@ -12,7 +12,7 @@
       <%= form.label :start_on_to %>
       <%= form.date_field :start_on_to, value: @start_on_to %>
     </div>
-    <%= form.submit "Filter jobs"  %>
+    <%= form.submit "Filter jobs", class: "btn-primary "  %>
   <% end  %>
 </div>
 <%= render JobsTableComponent.new(jobs: @jobs) %>
