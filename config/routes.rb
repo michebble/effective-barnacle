@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   authenticated :admin do
     root to: redirect("dashboard")
     resource :dashboard, only: %i[show]
+    resources :jobs, only: %i[new create]
   end
 
   get "/", to: redirect("/admins/sign_in")
