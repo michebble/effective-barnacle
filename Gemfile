@@ -19,6 +19,7 @@ gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "view_component", "~> 2.78"
+gem "rack-attack", "~> 6.6"
 
 group :development, :test do
   gem "capybara", "~> 3.38"

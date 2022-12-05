@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  unless Rails.env.production?
+  unless Rails.env.production? || Rails.env.test?
     around_action :n_plus_one_detection
 
     def n_plus_one_detection
