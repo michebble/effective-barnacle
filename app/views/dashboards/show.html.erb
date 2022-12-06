@@ -2,8 +2,8 @@
   <span class="prose-xl">Hello <%= @current_admin.name %></span>
   <%= button_to "logout", destroy_admin_session_path, method: "delete", class: "btn-tertiary" %>
 </div>
-<div class="py-6">
-  <%= form_for :by_period, url: dashboard_path, method: "get", class: "flex items-end" do |form| %>
+<div class="py-6 flex justify-between">
+  <%= form_with scope: :by_period, url: dashboard_path, method: "get", class: "flex items-end" do |form| %>
     <div class="flex flex-col pr-2">
       <%= form.label :start_on_from %>
       <%= form.date_field :start_on_from, value: @start_on_from %>
@@ -14,5 +14,8 @@
     </div>
     <%= form.submit "Filter jobs", class: "btn-primary "  %>
   <% end  %>
+  <div class="flex items-end">
+    <%= link_to "Create job", new_job_path, class: "btn-secondary" %>
+  </div>
 </div>
 <%= render JobsTableComponent.new(jobs: @jobs) %>

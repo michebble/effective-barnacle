@@ -13,8 +13,10 @@
 
   <body>
     <main class="container mx-4 md:mx-16 mt-28 px-5 flex flex-col">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="mx-auto">
+        <p class="notice text-lime-700"><%= notice %></p>
+        <p class="alert text-red-700"><%= alert %></p>
+      </div>
       <%= yield %>
     </main>
   </body>

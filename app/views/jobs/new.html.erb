@@ -1,0 +1,29 @@
+<%= form_with model: @job, url: jobs_path, method: "post", class: "w-2/3 mx-auto" do |form|%>
+  <div class="flex flex-col mb-2">
+    <%= form.label :start_on, "Start on date" %>
+    <%= form.date_field :start_on, value: @job.start_on, class: "w-full" %>
+  </div>
+  <div class="flex flex-col mb-2">
+    <%= form.label :client_id, "Client" %>
+    <%= form.select :client_id, Client.all.collect { |c| [ c.name, c.id ] }, include_blank: true, value: @job.client_id %>
+  </div>
+  <div class="flex flex-col mb-2">
+    <%= form.label :plumber_ids, "Plumbers" %>
+    <%= form.select(
+      :plumber_ids,
+      options_from_collection_for_select(Plumber.all, 'id', 'name'),
+      { },
+      {
+        multiple: true,
+        data: {
+          controller: 'ts-select'
+        }
+      }
+    ) %>
+  </div>
+  <div class="flex justify-between">
+    <%= form.submit class: "btn-primary" %>
+    <%= link_to "Cancel", dashboard_path, class: "btn-secondary" %>
+  </div>
+
+<% end %>
